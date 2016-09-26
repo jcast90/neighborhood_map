@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Google Maps</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/app.js"></script>
+    <!-- <script src="js/knockout-3.4.0.js"></script> -->
+</head>
+
+<body>
+    <div id="map" data-bind="click: hideElements">
+        <div id="title">
+            <h2>Coffee In Newport, OR</h2>
+        </div>
+
+        <div data-bind="css: navStatus">
+            <input id="search" placeholder="Search by name" data-bind="textInput: userInput, event: {keyup: filterMarkers}">
+            <div id="list-holder">
+                <ul id="list-view" data-bind="foreach: visible">
+                    <li id="list-name" data-bind="text: name, click: $parent.showInfo"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="error"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA95JNmboZWO0PjUXnouGLFqxkVt9YSgws&callback=initMap" async defer></script>
+</body>
+
+</html>
