@@ -1,113 +1,104 @@
-html, body{
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-    
 }
 
-#map{
-    
+#container {
     height: 100%;
 }
 
-#title{
-  position: fixed;
-  top: 0px;
-  left: 5%;
-  width: 50%;
+#map {
+    height: 100%;
 }
 
+.searchDisplay {
+    position: fixed;
+    width: 100%;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#go-places {
+    font-size: 15px;
+}
+
+#go-places:hover {
+    cursor: pointer;
+}
 
 #search {
-  position: fixed;
-  left: 5%;
-  top: 45px;
-  height: 30px;
-  width: 19.5%;
-  font-size: 15px;
-}
-
-#list-view {
-  position: fixed;
-  height: 27%;
-  overflow: auto;
-  top: 85px;
-  left: 5%;
-  width: 20%;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
+    margin-top: 10px;
+    height: 30px;
+    font-size: 15px;
 }
 
 #error {
-  position: fixed;
-  top: 350px;
-  left: 5%;
-  width: 20%;
+    position: fixed;
+    top: 350px;
+    left: 5%;
+    width: 20%;
 }
 
+
 /*Credit https://gist.github.com/jedsundwall/586144*/
+
 li:after {
-content: ", ";
+    content: ", ";
 }
 
 li:last-child:after {
-content: "";
+    content: "";
 }
 
 @media only screen and (max-width: 650px) {
-
     h2 {
-      font-size: 12px;
+        font-size: 12px;
     }
-
     /*#iWindow {
       height: 150px;
     }*/
-
     #pic {
-      display: none;
+        display: none;
     }
-
-
     #pageTitle {
-    position: fixed;
-    top: 0px;
-    width: 30%;
-    left: 5%;
+        position: fixed;
+        top: 0px;
+        width: 30%;
+        left: 5%;
     }
-
     .navClosed {
-      display: none;
+        display: none;
     }
-
     #search {
-    position: fixed;
-    left: 5%;
-    top: 40px;
-    height: 30px;
-    width: 29%;
-    font-size: 8px;
+        position: fixed;
+        left: 5%;
+        top: 40px;
+        height: 30px;
+        width: 29%;
+        font-size: 8px;
     }
-
     #list-view {
-    position: fixed;
-    height:27%;
-    overflow: auto;
-    top: 80px;
-    left: 5%;
-    width: 30%;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
+        position: fixed;
+        height: 27%;
+        overflow: auto;
+        top: 80px;
+        left: 5%;
+        width: 30%;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
     }
-
     #error {
-    position: fixed;
-    top: 320px;
-    left: 5%;
-    width: 30%;
+        position: fixed;
+        top: 320px;
+        left: 5%;
+        width: 30%;
     }
 }
