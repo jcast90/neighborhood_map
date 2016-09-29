@@ -13,29 +13,28 @@ body {
     height: 100%;
 }
 
-.searchDisplay {
+.searchCon {
     position: fixed;
     width: 100%;
+    margin:10px 0px;
 }
 
-.text {
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 10px;
+.text{
+    font-size-adjust: auto;
+    white-space: none;
+    float:left;
+    margin:0;
+
 }
 
-#go-places {
-    font-size: 15px;
-}
 
-#go-places:hover {
+/*#go-places:hover {
     cursor: pointer;
 }
-
-#search {
+*/
+#search{
     margin-top: 10px;
-    height: 30px;
-    font-size: 15px;
+    height: auto;
 }
 
 #error {
@@ -46,59 +45,3 @@ body {
 }
 
 
-/*Credit https://gist.github.com/jedsundwall/586144*/
-
-li:after {
-    content: ", ";
-}
-
-li:last-child:after {
-    content: "";
-}
-
-@media only screen and (max-width: 650px) {
-    h2 {
-        font-size: 12px;
-    }
-    /*#iWindow {
-      height: 150px;
-    }*/
-    #pic {
-        display: none;
-    }
-    #pageTitle {
-        position: fixed;
-        top: 0px;
-        width: 30%;
-        left: 5%;
-    }
-    .navClosed {
-        display: none;
-    }
-    #search {
-        position: fixed;
-        left: 5%;
-        top: 40px;
-        height: 30px;
-        width: 29%;
-        font-size: 8px;
-    }
-    #list-view {
-        position: fixed;
-        height: 27%;
-        overflow: auto;
-        top: 80px;
-        left: 5%;
-        width: 30%;
-        background-color: #fff;
-        margin: 0;
-        padding: 0;
-        font-size: 15px;
-    }
-    #error {
-        position: fixed;
-        top: 320px;
-        left: 5%;
-        width: 30%;
-    }
-}

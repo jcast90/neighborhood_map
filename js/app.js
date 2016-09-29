@@ -180,26 +180,7 @@ var ViewModel = function () {
         google.maps.event.trigger(placeItem.marker, 'click');
         self.hideElements();
     };
-    //toggle navigation
-    self.toggleNav = ko.observable(false);
-    this.navStatus = ko.pureComputed(function () {
-        return self.toggleNav() === false ? 'nav' : 'navClosed';
-    }, this);
-    self.hideElements = function (toggleNav) {
-        self.toggleNav(true);
 
-        return true;
-    };
-    self.showElements = function (toggleNav) {
-        self.toggleNav(false);
-        return true;
-    };
-
-    self.visible = ko.observableArray();
-
-    self.placeList().forEach(function (place) {
-        self.visible.push(place);
-    });
    //store user input
     self.userInput = ko.observable('');
 
@@ -253,4 +234,9 @@ function createMarker(latlng, title, streetAddress, cityAddress, url) {
 
         infoWindow.open(map, marker);
     });
+}
+
+function wikiData(){
+
+
 }
