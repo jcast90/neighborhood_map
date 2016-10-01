@@ -20,6 +20,10 @@
         </div>
         <div class="col-md-10 col-sml-10 col-xs-10" id="map"></div>
     </div>
+    <ul data-bind="foreach: placeList">
+        <li data-bind="text: title"></li>
+    </ul>
+
     <div id="error"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

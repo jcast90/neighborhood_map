@@ -127,6 +127,14 @@ function googleError() {
     document.getElementById("map").innerHTML = "<h2>Uh-Oh! Something went wrong, try refreshing the page.</h2>";
 }
 
+//1. display list
+//2. create map markers once
+//3. filter list
+//4. adding click functionality markers and list items (animate map marker icon)
+//5.
+
+
+
 
 var place = function (data) {
     "use strict";
@@ -229,6 +237,8 @@ function createMarker(latlng, title, streetAddress, cityAddress, url) {
     google.maps.event.addListener(marker, 'click', function () {
         //info window content
         var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
+
+        var wikiContent = wikiData();
 
         infoWindow.setContent(iwContent);
 
