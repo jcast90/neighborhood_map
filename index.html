@@ -18,7 +18,7 @@
             <input class="btn btn-xs" id="go-places" type="submit" value="Go">
             <div id="wiki-info" class="col-md-12 col-sml-12"></div>
             <ul data-bind="foreach: placeList">
-                <li data-bind="text: title"></li>
+                <li data-bind="text: title, click: title"></li>
             </ul>
         </div>
         <div class="col-md-10 col-sml-10 col-xs-10" id="map"></div>
