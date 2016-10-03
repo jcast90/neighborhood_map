@@ -177,7 +177,6 @@ var ViewModel = function () {
     });
 
     self.showInfo = function (placeItem) {
-        google.maps.event.trigger(placeItem.marker, 'click');
         self.hideElements();
     };
 
@@ -201,6 +200,7 @@ var ViewModel = function () {
     };
 };
 //show locations on map
+
 function displayLocations() {
 
     var bounds = new google.maps.LatLngBounds();
@@ -228,9 +228,9 @@ function createMarker(latlng, title, streetAddress, cityAddress, url) {
 
     google.maps.event.addListener(marker, 'click', function () {
         //info window content
-        var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
+        /*var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
 
-        infoWindow.setContent(iwContent);
+        infoWindow.setContent(iwContent);*/
 
         infoWindow.open(map, marker);
     });
