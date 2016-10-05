@@ -17,17 +17,19 @@
             <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff">
             <input class="btn btn-xs" id="go-places" type="submit" value="Go">
             <div id="wiki-info" class="col-md-12 col-sml-12"></div>
+             <ul data-bind="foreach: placeItem">
+                <li data-bind="text: this.showInfo"></li>
+            </ul>
         </div>
         <div class="col-md-10 col-sml-10 col-xs-10" id="map"></div>
+
     </div>
-    <ul data-bind="foreach: placeList">
-        <li data-bind="text: title"></li>
-    </ul>
+
 
     <div id="error"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA95JNmboZWO0PjUXnouGLFqxkVt9YSgws&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA95JNmboZWO0PjUXnouGLFqxkVt9YSgws&callback=initMap" onerror="googleError()" async defer></script>
 </body>
 
 </html>
