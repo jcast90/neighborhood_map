@@ -17,8 +17,13 @@
             <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff">
             <input class="btn btn-xs" id="go-places" type="submit" value="Go">
             <div id="wiki-info" class="col-md-12 col-sml-12"></div>
+<<<<<<< HEAD
              <ul data-bind="foreach: placeItem">
                 <li data-bind="text: this.showInfo"></li>
+=======
+            <ul data-bind="foreach: placeList">
+                <li data-bind="text: title, click: title"></li>
+>>>>>>> origin/master
             </ul>
         </div>
         <div class="col-md-10 col-sml-10 col-xs-10" id="map"></div>
