@@ -182,15 +182,10 @@ var ViewModel = function () {
         });
     });
 
-<<<<<<< HEAD
     this.showInfo = function (placeItem) {
         google.maps.event.trigger(placeItem.marker, 'click');
         this.hideElements();
-=======
-    self.showInfo = function (placeItem) {
-        self.hideElements();
->>>>>>> origin/master
-    };
+
 
    //store user input
     this.userInput = ko.observable('');
@@ -211,46 +206,6 @@ var ViewModel = function () {
         });
     };
 };
-<<<<<<< HEAD
-=======
-//show locations on map
-
-function displayLocations() {
-
-    var bounds = new google.maps.LatLngBounds();
-
-    for (var i = 0; i < locations.length; i++) {
-        var latlng = new google.maps.LatLng(locations[i].lat, locations[i].lng);
-        var title = locations[i].title;
-        var streetAddress = locations[i].streetAddress;
-        var cityAddress = locations[i].cityAddress;
-        var url = locations[i].url;
-        createMarker(latlng, title, streetAddress, cityAddress, url);
-
-        bounds.extend(latlng);
-    }
-
-    map.fitBounds(bounds);
-}
-//marker info on map
-function createMarker(latlng, title, streetAddress, cityAddress, url) {
-    var marker = new google.maps.Marker({
-        map: map
-        , position: latlng
-        , title: title
-    });
-
-    google.maps.event.addListener(marker, 'click', function () {
-        //info window content
-        /*var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
-
-        infoWindow.setContent(iwContent);*/
-
-        infoWindow.open(map, marker);
-    });
-}
->>>>>>> origin/master
-
 
 
 function googleError() {
