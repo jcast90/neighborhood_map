@@ -131,12 +131,9 @@ function initMap() {
 //5. Include API
 
 
-
-
 var Place = function (data) {
+
     // Create a marker per location, and put into markers array.
-
-
     this.marker = new google.maps.Marker({
         title: data.title,
         map: map,
@@ -146,7 +143,12 @@ var Place = function (data) {
         }
     });
     this.marker.addListener('click', function () {
+
+
+
         infoWindow.open(map, this);
+
+
         this.marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
             this.marker.setAnimation(null);
@@ -155,74 +157,75 @@ var Place = function (data) {
 }
 
 
+
+
 // ViewModel
 var ViewModel = function () {
-        "use strict";
+    "use strict";
 
-        //run through the place array
-        this.placeList = ko.observableArray();
-        //run through locations
-        for (var i = 0, j = locations.length; i < j; i++) {
-            var tempMarker = new Place(locations[i]);
-            this.placeList.push(tempMarker);
-        }
+    //run through the place array
+    this.placeList = ko.observableArray();
+    //run through locations
+    for (var i = 0, j = locations.length; i < j; i++) {
+        var tempMarker = new Place(locations[i]);
+        this.placeList.push(tempMarker);
+    }
 
-        this.placeList.forEach(function (placeItem) {
-            //place markers
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations.lng),
-                map: map,
-                animation: google.maps.Animation.DROP
-            });
-            placeItem.marker = marker;
-            //animate marker
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, this);
-                placeItem.marker.setAnimation(google.maps.Animation.BOUNCE);
-                setTimeout(function () {
-                    placeItem.marker.setAnimation(null);
-                }, 500);
-            });
+    /* this.placeList.forEach(function (placeItem) {
+         //place markers
+         marker = new google.maps.Marker({
+             position: new google.maps.LatLng(locations.lng),
+             map: map,
+             animation: google.maps.Animation.DROP
+         });
+         placeItem.marker = marker;
+         //animate marker
+         google.maps.event.addListener(marker, 'click', function () {
+             infowindow.open(map, this);
+             placeItem.marker.setAnimation(google.maps.Animation.BOUNCE);
+             setTimeout(function () {
+                 placeItem.marker.setAnimation(null);
+             }, 500);
+         });
+     });*/
+
+
+    this.showInfo = function (placeItem) {
+        this.hideElements();
+    };
+    //store user input
+    this.userInput = ko.observable('');
+
+    this.filterMarkers = function () {
+
+        var searchInput = this.userInput().toLowerCase();
+        this.visible.removeAll();
+        this.placeList().forEach(function (place) {
+            place.marker.setVisible(false);
+
+            if (place.name().toLowerCase().indexOf(searchInput) !== -1) {
+                this.visible.push(place);
+            }
         });
+        this.visible().forEach(function (place) {
+            place.marker.setVisible(true);
+        });
+    };
+};
+/*
+google.maps.event.addListener(marker, 'click', function () {
+    //info window content
+    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
+
+    infoWindow.setContent(iwContent);
+
+    infoWindow.open(map, marker);
+});
+}*/
 
 
-        this.showInfo = function (placeItem) {
-            google.maps.event.trigger(placeItem.marker, 'click');
-            this.hideElements();
-
-            //store user input
-            this.userInput = ko.observable('');
-
-            this.filterMarkers = function () {
-
-                var searchInput = this.userInput().toLowerCase();
-                this.visible.removeAll();
-                this.placeList().forEach(function (place) {
-                    place.marker.setVisible(false);
-
-                    if (place.name().toLowerCase().indexOf(searchInput) !== -1) {
-                        this.visible.push(place);
-                    }
-                });
-                this.visible().forEach(function (place) {
-                    place.marker.setVisible(true);
-                });
-            };
-        };
-        /*
-            google.maps.event.addListener(marker, 'click', function () {
-                //info window content
-                var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
-
-                infoWindow.setContent(iwContent);
-
-                infoWindow.open(map, marker);
-            });
-        }
-
-        */
 
 
-        function googleError() {
-            document.getElementById("map").innerHTML = "<h2>Uh-Oh! Something went wrong, try refreshing the page.</h2>";
-        }
+function googleError() {
+    document.getElementById("map").innerHTML = "<h2>Uh-Oh! Something went wrong, try refreshing the page.</h2>";
+}

@@ -17,8 +17,8 @@
             <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff">
             <input class="btn btn-xs" id="go-places" type="submit" value="Go">
             <div id="wiki-info" class="col-md-12 col-sml-12"></div>
-            <ul data-bind="foreach: placeList">
-                <li data-bind="text: title, click: title"></li>
+            <ul data-bind="foreach: locations">
+                <li data-bind="text: title"></li>
 
             </ul>
         </div>
