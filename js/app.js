@@ -131,9 +131,9 @@ function initMap() {
 //5. Include API
 
 
+
 var Place = function (data) {
 
-    // Create a marker per location, and put into markers array.
     this.marker = new google.maps.Marker({
         title: data.title,
         map: map,
@@ -142,19 +142,24 @@ var Place = function (data) {
             lng: (data.lng)
         }
     });
+
+
+
     this.marker.addListener('click', function () {
-
-
 
         infoWindow.open(map, this);
 
+        var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + Place.title + '</div>' + '<div class="iw_content">' + Place.streetAddress + '<br />' + Place.cityAddress + '<br />' + Place.url + '</div></div>';
 
-        this.marker.setAnimation(google.maps.Animation.BOUNCE);
+        infoWindow.setContent(iwContent);
+
+        marker.setAnimation(google.maps.Animation.DROP);
         setTimeout(function () {
             this.marker.setAnimation(null);
-        }, 500);
+        }, 200);
     });
 }
+
 
 
 
