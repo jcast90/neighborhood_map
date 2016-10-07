@@ -158,8 +158,8 @@ var Place = function (data) {
 
         that.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
-            that.marker.setAnimation(null);
-        }, 500);
+            that.setAnimation(null);
+        }, 1400);
     });
 }
 
