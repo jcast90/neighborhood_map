@@ -133,8 +133,9 @@ function initMap() {
 
 
 var Place = function (data) {
+    var self = this;
 
-    this.marker = new google.maps.Marker({
+    self.marker = new google.maps.Marker({
         title: data.title,
         map: map,
         position: {
@@ -145,23 +146,22 @@ var Place = function (data) {
 
 
 
-    this.marker.addListener('click', function () {
+    self.marker.addListener('click', function () {
 
-        infoWindow.open(map, this);
+        var that = this;
 
-        var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + Place.title + '</div>' + '<div class="iw_content">' + Place.streetAddress + '<br />' + Place.cityAddress + '<br />' + Place.url + '</div></div>';
+        infoWindow.open(map, self.marker);
+
+        var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + data.url + '</div></div>';
 
         infoWindow.setContent(iwContent);
 
-        marker.setAnimation(google.maps.Animation.DROP);
+        that.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
-            this.marker.setAnimation(null);
-        }, 200);
+            that.marker.setAnimation(null);
+        }, 500);
     });
 }
-
-
-
 
 
 // ViewModel
@@ -176,28 +176,10 @@ var ViewModel = function () {
         this.placeList.push(tempMarker);
     }
 
-    /* this.placeList.forEach(function (placeItem) {
-         //place markers
-         marker = new google.maps.Marker({
-             position: new google.maps.LatLng(locations.lng),
-             map: map,
-             animation: google.maps.Animation.DROP
-         });
-         placeItem.marker = marker;
-         //animate marker
-         google.maps.event.addListener(marker, 'click', function () {
-             infowindow.open(map, this);
-             placeItem.marker.setAnimation(google.maps.Animation.BOUNCE);
-             setTimeout(function () {
-                 placeItem.marker.setAnimation(null);
-             }, 500);
-         });
-     });*/
 
-
-    this.showInfo = function (placeItem) {
+    /*this.showInfo = function (placeItem) {
         this.hideElements();
-    };
+    };*/
     //store user input
     this.userInput = ko.observable('');
 
@@ -217,16 +199,6 @@ var ViewModel = function () {
         });
     };
 };
-/*
-google.maps.event.addListener(marker, 'click', function () {
-    //info window content
-    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + title + '</div>' + '<div class="iw_content">' + streetAddress + '<br />' + cityAddress + '<br />' + url + '</div></div>';
-
-    infoWindow.setContent(iwContent);
-
-    infoWindow.open(map, marker);
-});
-}*/
 
 
 
