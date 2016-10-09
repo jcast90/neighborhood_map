@@ -14,11 +14,11 @@
     <div id="container" class=" col-lg-12 col-md-12 col-sml-12 col-sx-12">
         <div class="searchCon col-md-2 col-sml-2 col-xs-2">
             <span class="col-md-12 col-sml-12 col-xs-12 text">Search for nearby places</span>
-            <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff">
+            <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff" data-bind= "textInput: self.userInput">
             <input class="btn btn-xs" id="go-places" type="submit" value="Go">
             <div id="wiki-info" class="col-md-12 col-sml-12"></div>
-            <ul data-bind="foreach: locations">
-                <li data-bind="text: title"></li>
+            <ul data-bind="foreach: placeList">
+                <li data-bind="text: title, click:listClick"></li>
 
             </ul>
         </div>
