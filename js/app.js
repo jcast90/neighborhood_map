@@ -138,14 +138,21 @@ var Place = function (data) {
         });
         self.marker.addListener('click', function () {
             var that = this;
-            infoWindow.open(map, self.marker);
+            /******** add call to yelp request *******/
+            //getYelpData(place);
+
+            /***** move code that updates and opens infowindo to SUCCESS or DONE functions in AJAX request http://api.jquery.com/jquery.ajax/ *****/
             var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + data.url + '</div></div>';
             infoWindow.setContent(iwContent);
+            infoWindow.open(map, self.marker);
             that.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function () {
                 that.setAnimation(null);
             }, 1400);
         });
+
+        self.isVisible = ko.observable(true);
+
     }
     // ViewModel
 var ViewModel = function () {
@@ -158,29 +165,29 @@ var ViewModel = function () {
         var tempMarker = new Place(locations[i]);
         this.placeList.push(tempMarker);
     }
-    self.visibile = ko.observable(this.placeList);
-    /*this.showInfo = function (placeItem) {
-        this.hideElements();
-    };*/
+
+
     //store user input
     self.userInput = ko.observable('');
 
-   /* self.filterMarkers = ko.computed(function () {
+    self.filterMarkers = ko.computed(function () {
         console.log(self.userInput());
         var searchInput = self.userInput().toLowerCase();
 
-        *self.visible.removeAll();
 
-        this.placeList().forEach(function (place) {
+
+        self.placeList().forEach(function (place) {
             place.marker.setVisible(false);
-            if (place.title().toLowerCase().indexOf(searchInput) !== -1) {
-                this.visible.push(place);
+            if (place.title.toLowerCase().indexOf(searchInput) !== -1) {
+                place.isVisible(true);
+                place.marker.setVisible(true);
+            } else{
+                place.isVisible(false);
+                place.marker.setVisible(false);
             }
+
         });
-        self.visible().forEach(function (place) {
-            place.marker.setVisible(true);
-        });
-    });*/
+    });
 };
 this.listClick = function (location) {
     google.maps.event.trigger(location.marker, 'click');
