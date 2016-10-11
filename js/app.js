@@ -164,7 +164,7 @@ var Place = function (data) {
                 callback: 'cb', // This is crucial to include for jsonp implementation in AJAX or else the oauth-signature will be wrong.
                 location: '1032+Castro+Street+Mountain+View',
                 term: 'cafe',
-                cll: '37.385083%2C-122.08460200000002'
+                cll: '37.385083,-122.08460200000002'
             };
 
             var encodedSignature = oauthSignature.generate('GET', yelp_url, parameters, YELP_KEY_SECRET, YELP_TOKEN_SECRET);
