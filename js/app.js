@@ -141,7 +141,7 @@ var Place = function (data) {
         self.marker.addListener('click', function () {
             var that = this;
             /******** add call to yelp request *******/
-            //getYelpData(place);
+
 
 
             function nonce_generate() {
@@ -162,9 +162,8 @@ var Place = function (data) {
                 oauth_signature_method: 'HMAC-SHA1',
                 oauth_version: '1.0',
                 callback: 'cb', // This is crucial to include for jsonp implementation in AJAX or else the oauth-signature will be wrong.
-                location: '1032+Castro+Street+Mountain+View',
-                term: 'cafe',
-                cll: '37.385083,-122.08460200000002'
+                location: 'San Diego',
+                term: self.title
             };
 
             var encodedSignature = oauthSignature.generate('GET', yelp_url, parameters, YELP_KEY_SECRET, YELP_TOKEN_SECRET);
@@ -176,8 +175,16 @@ var Place = function (data) {
                 cache: true, // This is crucial to include as well to prevent jQuery from adding on a cache-buster parameter "_=23489489749837", invalidating our oauth-signature
                 dataType: 'jsonp',
                 success: function (yelpResults) {
+
                     // Do stuff with results
                     console.log(yelpResults);
+                    infoWindow.setContent(iwContent);
+                    infoWindow.open(map, self.marker);
+                    yelpResults.businesses[0].rating;
+                    that.setAnimation(google.maps.Animation.BOUNCE);
+                    setTimeout(function () {
+                        that.setAnimation(null);
+                    }, 1400);
                 },
                 fail: function (xhr, status, error) {
                     console.log("An AJAX error occured: " + status + "\nError: " + error + "\nError detail: " + xhr.responseText);
@@ -197,12 +204,13 @@ var Place = function (data) {
 
             /***** move code that updates and opens infowindo to SUCCESS or DONE functions in AJAX request http://api.jquery.com/jquery.ajax/ *****/
             var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + data.url + '</div></div>';
+            /*
             infoWindow.setContent(iwContent);
             infoWindow.open(map, self.marker);
             that.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function () {
                 that.setAnimation(null);
-            }, 1400);
+            }, 1400);*/
         });
 
         self.isVisible = ko.observable(true);
