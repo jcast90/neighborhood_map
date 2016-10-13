@@ -175,12 +175,14 @@ var Place = function (data) {
                 cache: true, // This is crucial to include as well to prevent jQuery from adding on a cache-buster parameter "_=23489489749837", invalidating our oauth-signature
                 dataType: 'jsonp',
                 success: function (yelpResults) {
-
-                    // Do stuff with results
                     console.log(yelpResults);
-                    infoWindow.setContent(iwContent);
+                    console.log(yelpResults.businesses[0].rating);
+                    // Do stuff with results
+                    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + yelpResults.businesses[0].rating + '</div></div>';
+
+                    infoWindow.setContent(iwContent, yelpResults);
                     infoWindow.open(map, self.marker);
-                    yelpResults.businesses[0].rating;
+
                     that.setAnimation(google.maps.Animation.BOUNCE);
                     setTimeout(function () {
                         that.setAnimation(null);
@@ -203,7 +205,7 @@ var Place = function (data) {
 
 
             /***** move code that updates and opens infowindo to SUCCESS or DONE functions in AJAX request http://api.jquery.com/jquery.ajax/ *****/
-            var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + data.url + '</div></div>';
+
             /*
             infoWindow.setContent(iwContent);
             infoWindow.open(map, self.marker);
