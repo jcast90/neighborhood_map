@@ -180,9 +180,11 @@ var Place = function (data) {
                     console.log(yelpResults.businesses[0].rating_img_url);
 
                     var stars = yelpResults.businesses[0].rating_img_url;
-                    var starRating = '<img src=stars>'  ;
+                    var starRating = '<img src="' + stars + '">'  ;
+                    var dblSpace = '  ';
+                    var rating = 'Rating: ';
                     // Do stuff with results
-                    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + '<p>Rating:</p>' + yelpResults.businesses[0].rating + starRating + '</div></div>';
+                    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + rating +  yelpResults.businesses[0].rating + dblSpace + starRating + '</div></div>';
 
                     infoWindow.setContent(iwContent, yelpResults);
                     infoWindow.open(map, self.marker);
@@ -200,23 +202,6 @@ var Place = function (data) {
             // Send AJAX query via jQuery library.
             $.ajax(settings);
 
-
-
-
-
-
-
-
-
-            /***** move code that updates and opens infowindo to SUCCESS or DONE functions in AJAX request http://api.jquery.com/jquery.ajax/ *****/
-
-            /*
-            infoWindow.setContent(iwContent);
-            infoWindow.open(map, self.marker);
-            that.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function () {
-                that.setAnimation(null);
-            }, 1400);*/
         });
 
         self.isVisible = ko.observable(true);
@@ -249,9 +234,12 @@ var ViewModel = function () {
             if (place.title.toLowerCase().indexOf(searchInput) !== -1) {
                 place.isVisible(true);
                 place.marker.setVisible(true);
+
             } else {
                 place.isVisible(false);
                 place.marker.setVisible(false);
+                infoWindow.close();
+
             }
 
         });

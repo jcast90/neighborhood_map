@@ -4,37 +4,42 @@ body {
     margin: 0;
     padding: 0;
 }
+ul{
+
+    margin-right:0;
+    -webkit-padding-start: 0;
+}
+li{
+    list-style: none;
+    border: solid 1px #c69;
+    padding: 4px 2px;
+    cursor: pointer;
+    display:block;
+    margin-right:0;
+}
 
 #container {
     height: 100%;
+    width: 100%;
 }
 
 #map {
     height: 100%;
+
 }
 
 .searchCon {
-    position: fixed;
-    width: 100%;
-    margin:10px 0px;
-}
-
-.text{
-    font-size-adjust: auto;
-    white-space: none;
-    float:left;
-    margin:0;
-
+    margin-top:20px;
+    border:solid 1px #c69;
+    text-align: left;
 }
 
 
-/*#go-places:hover {
-    cursor: pointer;
-}
-*/
 #search{
-    margin-top: 10px;
+    margin: 10px 0;
     height: auto;
+    border: solid 1px #000;
+
 }
 
 #error {
