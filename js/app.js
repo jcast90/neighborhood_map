@@ -103,14 +103,22 @@ var locations = [
     //start map
 function initMap() {
     "use strict"
-    var styles = [{"featureType":"administrative.country","elementType":"geometry","stylers":[{"visibility":"simplified"},{"hue":"#ff0000"}]}];
+    var styles = [{
+        "featureType": "administrative.country",
+        "elementType": "geometry",
+        "stylers": [{
+            "visibility": "simplified"
+        }, {
+            "hue": "#ff0000"
+        }]
+    }];
     //map style https://snazzymaps.com/style/1243/xxxxxxxxxxx
 
 
     var mapOptions = {
         center: new google.maps.LatLng(32.85652, -117.214226),
         zoom: 15,
-        styles:styles,
+        styles: styles,
     };
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     // a new Info Window is created
@@ -152,7 +160,7 @@ var Place = function (data) {
             function nonce_generate() {
                 return (Math.floor(Math.random() * 1e12).toString());
             }
-            var yelp_url = 'http://api.yelp.com/v2/search';
+            var yelp_url = 'https://api.yelp.com/v2/search';
 
             var YELP_KEY = "ZIxGwPs8HIxQ99IbdLgrZg";
             var YELP_KEY_SECRET = "una9U8wr7rimXI6qHnMiU-1_Kjg";
@@ -185,11 +193,11 @@ var Place = function (data) {
                     console.log(yelpResults.businesses[0].rating_img_url);
 
                     var stars = yelpResults.businesses[0].rating_img_url;
-                    var starRating = '<img src="' + stars + '">'  ;
+                    var starRating = '<img src="' + stars + '">';
                     var dblSpace = '  ';
                     var rating = 'Rating: ';
                     // Do stuff with results
-                    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + rating +  yelpResults.businesses[0].rating + dblSpace + starRating + '</div></div>';
+                    var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + rating + yelpResults.businesses[0].rating + dblSpace + starRating + '</div></div>';
 
                     infoWindow.setContent(iwContent, yelpResults);
                     infoWindow.open(map, self.marker);
