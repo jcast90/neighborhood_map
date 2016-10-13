@@ -180,7 +180,7 @@ var Place = function (data) {
                     console.log(yelpResults.businesses[0].rating_img_url);
 
                     var stars = yelpResults.businesses[0].rating_img_url;
-                    var starRating = '<img src="stars"' > ;
+                    var starRating = '<img src=stars>'  ;
                     // Do stuff with results
                     var iwContent = '<div id="iw_container">' + '<div class="iw_title">' + data.title + '</div>' + '<div class="iw_content">' + data.streetAddress + '<br />' + data.cityAddress + '<br />' + '<p>Rating:</p>' + yelpResults.businesses[0].rating + starRating + '</div></div>';
 
