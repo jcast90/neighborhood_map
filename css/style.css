@@ -4,47 +4,49 @@ body {
     margin: 0;
     padding: 0;
 }
-ul{
 
-    margin-right:0;
+ul {
     -webkit-padding-start: 0;
 }
-li{
+
+li {
     list-style: none;
-    border: solid 1px #c69;
+    text-align: center;
+    border: solid 1px grey;
     padding: 4px 2px;
     cursor: pointer;
-    display:block;
-    margin-right:0;
+}
+
+li:hover {
+    background-color: #c2c7ca;
+    transform: scale(1.1);
 }
 
 #container {
     height: 100%;
     width: 100%;
-    padding:0;
+    padding: 0;
 }
 
 #map {
     height: 100%;
-    width:100%;
-    padding-left:0;
-    position:absolute;
+    width: 100%;
+    padding-left: 0;
+    position: absolute;
 }
 
 .searchCon {
-    margin-top:20px;
-    border:solid 1px #c69;
-   position:fixed;
+    height: 100%;
+    background-color: darkgrey;
+    position: fixed;
     z-index: 5;
 }
 
-
-
-#search{
+#search {
     margin: 10px 0;
+    z-index: 10;
     height: auto;
     border: solid 1px #000;
-
 }
 
 #error {
@@ -53,5 +55,3 @@ li{
     left: 5%;
     width: 20%;
 }
-
-
