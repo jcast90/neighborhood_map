@@ -103,9 +103,14 @@ var locations = [
     //start map
 function initMap() {
     "use strict"
+    var styles = [{"featureType":"administrative.country","elementType":"geometry","stylers":[{"visibility":"simplified"},{"hue":"#ff0000"}]}];
+    //map style https://snazzymaps.com/style/1243/xxxxxxxxxxx
+
+
     var mapOptions = {
         center: new google.maps.LatLng(32.85652, -117.214226),
         zoom: 15,
+        styles:styles,
     };
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     // a new Info Window is created

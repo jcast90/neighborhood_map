@@ -21,18 +21,23 @@ li{
 #container {
     height: 100%;
     width: 100%;
+    padding:0;
 }
 
 #map {
     height: 100%;
-
+    width:100%;
+    padding-left:0;
+    position:absolute;
 }
 
 .searchCon {
     margin-top:20px;
     border:solid 1px #c69;
-    text-align: left;
+   position:fixed;
+    z-index: 5;
 }
+
 
 
 #search{
