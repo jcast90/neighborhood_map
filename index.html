@@ -4,30 +4,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Google Maps</title>
+    <title>Neighborhood Maps</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/app.js"></script>
     <script src="js/oauth-signature.js"></script>
     <!-- <script src="js/knockout-3.4.0.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+
 </head>
 
 <body>
-    <div id="container" class=" col-lg-12 col-md-12 col-sml-12 col-sx-12">
-        <span><h2>Check out some places in my neighborhood!</h2></span>
-        <div class="searchCon col-md-2 col-sml-2 col-xs-2">
+    <div class="container-fluid">
 
-            <input class="col-md-12 col-sml-12 col-xs-12" id="search" type="text" placeholder="Search for stuff" data-bind="textInput: userInput">
+        <h2>Explore my neighborhood!</h2>
+        <div class="searchCon">
 
-            <div id="wiki-info" class="col-md-12 col-sml-12"></div>
-            <ul data-bind="foreach: placeList">
-                <li data-bind="text: title, click:listClick, visible: isVisible"></li>
+            <input id="search" type="text" placeholder="My neighborhood" data-bind="textInput: userInput">
+            <div class="dropdown">
+                <button type="button" class="btn-primary">Locations</button>
+                <div class="dropdown-content">
+                    <ul data-bind="foreach: placeList">
+                        <li data-bind="text: title, click:listClick, visible: isVisible"></li>
+                    </ul>
+                </div>
+            </div>
 
-            </ul>
+
+
         </div>
 
-        <div class="col-md-10 col-sml-10 col-xs-10" id="map"></div>
-
+        <div id="map"></div>
+        <footer>
+            <p>Data provided by yelp.</p>
+        </footer>
     </div>
 
 
@@ -35,6 +47,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA95JNmboZWO0PjUXnouGLFqxkVt9YSgws&callback=initMap" onerror="googleError()" async defer></script>
+
 </body>
 
 </html>

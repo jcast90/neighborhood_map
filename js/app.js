@@ -132,11 +132,7 @@ function initMap() {
 
 }
 
-// List of stuff to do:
-//1. display list
-//3. filter list
-//4. adding click functionality markers and list items (animate map marker icon)
-//5. Include API
+
 var Place = function (data) {
         var self = this;
         self.title = data.title;
