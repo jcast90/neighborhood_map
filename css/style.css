@@ -54,11 +54,11 @@ p {
     margin-bottom: 20px;
 }
 
-#map {
+.map_canvas {
     box-shadow: 0 0 40px black;
 }
 
-#search {
+.search {
     margin: 10px;
     z-index: 10;
     height: 20px;
@@ -74,7 +74,7 @@ p {
     display: inline;
 }
 
-#error {
+.error {
     position: fixed;
     top: 350px;
     left: 5%;
@@ -92,7 +92,7 @@ p {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background: rgba(255, 255, 255, 0.8);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
@@ -110,8 +110,9 @@ media queries
 ======================= */
 
 @media only screen and (min-width: 320px) {
-    #map {
+    .map_canvas {
         height: 77%;
+        clear: both;
     }
     .container-fluid h2 {
         margin: 5px auto;
@@ -126,10 +127,7 @@ media queries
         display: inline;
         width: inherit;
     }
-    #map {
-        clear: both;
-    }
-    #search {
+    .search {
         height: 20%;
     }
     .btn-primary {
@@ -155,13 +153,13 @@ media queries
     .container-fluid h2 {
         padding: 5px 0;
     }
-    #map {
+    .map_canvas {
         margin: 0 auto;
         height: 77%;
         padding: 0;
         width: 80%;
     }
-    #search {
+    .search {
         margin: 10px;
         z-index: 10;
         height: 20px;

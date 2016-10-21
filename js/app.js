@@ -102,7 +102,7 @@ var locations = [
 , ]
     //start map
 function initMap() {
-    "use strict"
+
     var styles = [{
         "featureType": "administrative.country",
         "elementType": "geometry",
@@ -203,8 +203,8 @@ var Place = function (data) {
                         that.setAnimation(null);
                     }, 1400);
                 },
-                fail: function (xhr, status, error) {
-                    console.log("An AJAX error occured: " + status + "\nError: " + error + "\nError detail: " + xhr.responseText);
+                error: function (xhr, status, error) {
+                    alert("An AJAX error occured: " + status + "\nError: " + error + "\nError detail: " + xhr.responseText);
                 }
             };
 
